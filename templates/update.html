@@ -1,0 +1,21 @@
+{%extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+<title>Stock Manager</title>
+{% block body %}
+
+<div class ="content">
+    <h1 style="text-align: center">Change Ticker</h1>
+</div>
+
+<div class="form">
+    <form action="/update/{{ticker.id}}" method="POST">
+        <input type="text" name="content" id="content" value="{{ticker.content}}">
+        <input type="submit" value="Update">
+
+    </form>
+
+</div>
+{% endblock %}

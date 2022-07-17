@@ -1,1 +1,46 @@
+{%extends 'base.html' %}
 
+{% block head %}
+<title>Stock Website</title>
+{% endblock %}
+
+
+
+{% block body %}
+<div id="right-column">
+<h2>Stock Tracker</h2>
+<table class="table-bordered">
+    <tr>
+    <th>Ticker</th>
+    <th>Price</th>
+    <th>Date Added</th>
+    <th>Actions</th>
+
+    </tr>
+
+{% for ticker in tickers %}
+<tr>
+    <td>{{ ticker.content }}</td>
+    <td>{{ ticker.price_data }}</td>
+    <td>{{ ticker.date_created.date() }}</td>
+    <td>
+        <a href="/delete/{{ ticker.id }}">Delete</a> 
+        <br>
+        <a href="/update/{{ ticker.id }}">Change</a>
+        <a href="/chart/{{ ticker.id }}">See Chart</a>
+
+    </td>
+</tr>
+{% endfor %}
+</table>
+
+<form action="/" method="POST">
+    <input type="text" name="content" id="content">
+    <input type="submit" value="Add Ticker">
+</form>
+</div>
+
+
+</form>
+
+{% endblock %}
